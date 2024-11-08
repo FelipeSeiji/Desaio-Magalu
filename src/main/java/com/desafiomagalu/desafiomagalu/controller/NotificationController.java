@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.desafiomagalu.desafiomagalu.DTO.NotificationDTO;
 import com.desafiomagalu.desafiomagalu.Service.NotificationService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/notification")
 public class NotificationController {
-
+    @Autowired
     private NotificationService notificationService;
+    
     @PostMapping
-    public ResponseEntity<Void> postMethodName(@RequestBody NotificationDTO dto) {
+    public ResponseEntity<Void> sendNotification(@RequestBody NotificationDTO dto) {
         notificationService.sendNotifications(dto);
         return ResponseEntity.accepted().build();
     }
