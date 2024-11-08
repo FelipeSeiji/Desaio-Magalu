@@ -13,7 +13,7 @@ public enum ChannelType {
 
     private String description;
 
-    public Channel toCHannel() {
+    public Channel toChannel() {
         return new Channel(id, description);
     }
 }
