@@ -9,6 +9,7 @@ import com.desafiomagalu.desafiomagalu.service.NotificationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,4 +40,9 @@ public class NotificationController {
         return ResponseEntity.ok(notification.get());
     }
     
+    @DeleteMapping("/{notificationId}")
+    public ResponseEntity<Void> cancelNotification(@PathVariable("notificationId") Long notificationId){
+        notificationService.cancelNotification(notificationId);
+        return ResponseEntity.noContent().build();
+    }
 }

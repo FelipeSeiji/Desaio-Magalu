@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.desafiomagalu.desafiomagalu.DTO.NotificationDTO;
 import com.desafiomagalu.desafiomagalu.domain.notification.Notification;
+import com.desafiomagalu.desafiomagalu.domain.status.StatusType;
 import com.desafiomagalu.desafiomagalu.repository.NotificationRepository;
 
 
@@ -21,7 +22,18 @@ public class NotificationService {
         notificationRepository.save(dto.toNotification());
     }
 
+    @Transactional
     public Optional<Notification> findById(Long notificationId){
         return notificationRepository.findById(notificationId);
+    }
+
+    @Transactional
+    public void cancelNotification(Long notificationId){
+        var notification = findById(notificationId);
+
+        if (notification.isPresent()){
+            notification.get().setStatus(StatusType.CANCELLED.toStatus());
+            notificationRepository.save(notification.get());
+        }
     }
 }
