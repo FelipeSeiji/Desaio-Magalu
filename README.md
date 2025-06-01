@@ -39,3 +39,28 @@ Desafio-Magalu/
 │   └── test/java/com/desafiomagalu/desafiomagalu/
 │       └── DesafiomagaluApplicationTests.java
 ├── pom.xml                      # Gerenciador de dependências
+```
+
+🧠 Funcionalidades
+Cadastro e envio de notificações para múltiplos canais.
+
+Gerenciamento de status de envio (PENDENTE, ENVIADO, ERRO, etc.).
+
+Inicialização de canais e status via DataLoader.
+
+Endpoint para consultar notificações com base em status, canal, etc.
+
+⚙️ Como Executar o Projeto
+🐳 Com Docker
+bash
+Copiar
+Editar
+docker-compose up --build
+Acesse em: http://localhost:8080
+
+💻 Localmente com Maven
+bash
+Copiar
+Editar
+./mvnw clean install
+./mvnw spring-boot:run
